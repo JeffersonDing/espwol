@@ -1,4 +1,4 @@
-# espwol: A ESP Based WiFi WoL(technically not) solution
+# espwol: A ESP Based WiFi WoL (technically not) solution
 
 > This design is still a working progress,
 although it's already up and running in my PC 👍 it's been great
@@ -64,9 +64,9 @@ of course, you need your jumpers, perfboards or fancy sockets if you want.
 
 ### List of Components
 
-- NodeMCU v1.0 (Or any other ESP based chip, for example a ESP32)
-- PC817 Optocoupler (4N25, 6N136, MOC3021, MOC3041, 6N137 could all work)
-- 150Ω resistor
+- `NodeMCU v1.0` (Or any other ESP based chip, for example a `ESP32`)
+- `PC817` Optocoupler (`4N25`, `6N136`, `MOC3021`, `MOC3041`, `6N137` could all work)
+- `150Ω` resistor
 
 ### Schematics
 
