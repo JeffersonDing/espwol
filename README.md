@@ -20,13 +20,13 @@ although it's already up and running in my PC 👍 it's been great
 
 ## What is espwol?
 
-I wanted to connect to my home PC from work, which alweady has Windows RDC setup
+I wanted to connect to my home PC from work, which already has Windows RDC setup
 and forwarded. However, I always find myself in the situation of forgetting to
 power on my PC before I leave.  
 
-WoL(Wake on LAN) is definitly a valid solution, I just need to send a magic
+WoL(Wake on LAN) is definitely a valid solution, I just need to send a magic
 packet to my PC to turn it on but the issue is I do not have a `Ethernet`
-connection to my PC, and WoL is almost imposible to do with `WiFi cards`.  
+connection to my PC, and WoL is almost impossible to do with `WiFi cards`.  
 
 Instead of using the `WoL` feature of my motherboard, `espwol` uses a
 WiFi connected `ESP8266 NodeMCU` to received post requests and activates
@@ -42,7 +42,7 @@ the internet.
 **However, this is not recommended if you do not have authentication
 set up, which is what is in place now.**
 
-What I do is I connect through my server that has `OVPN` setup with proper
+What I do is I connect through my server that has `Open VPN` setup with proper
 authentication and then I can send a post request to e.g.`192.168.0.100` just
 like I'm at home.
 
@@ -59,8 +59,8 @@ curl -X POST http://192.168.0.100/push
 
 ## Hardware Design
 
-The hardware of the solution is fiarly simple consisting of only 3 components,
-of course, you need your jumpers, perfboards or fancy sockets if you want.
+The hardware of the solution is fairly simple consisting of only 3 components,
+of course, you need your jumpers, perf-boards or fancy sockets if you want.
 
 ### List of Components
 
@@ -76,17 +76,17 @@ the power button on your PC**
 ![Fritzing Breadboard](./img/breadboard.png)
 ![Schematic](./img/schematic.png)
 
-### Wireing
+### Wiring
 
 1. `+5V` and `GND` to `vin` and `GND` pin on ESP
 2. `pin 1` of `PC817` to 150Ω resistor then `D0`(aka `GPIO16`)
 3. `pin 2` of `PC817` to `GND`
 4. connect whatever connector you like for the input and output pins,
-i just used some standard two screw PCB termination blocks.
+I just used some standard two screw PCB termination blocks.
 
 We also need two sets of connects from the PC to the ESP
 
-1. Connect `GND` of powersupply to `GND` of ESP,
+1. Connect `GND` of power supply to `GND` of ESP,
 you can find a GND wire on the `24 pin`,`PCI-E`,`SATA` or
 any kind of wire that comes out from your PSU, it's almost always a black one.
 
@@ -104,15 +104,16 @@ unused `SATA` connector.
 The software of this design is very simple, I just need a server that connects
 to my home WiFi and listens to `POST` requests on a endpoint. Since I will be
 running this in my local network only, I didn't implement any security features,
-but definitly a future TODO.  
+but definitely a future TODO.  
 
-The server is written using [aREST](https://github.com/marcoschwartz/aREST) by @ma
-rcoschwartz which makes it super easy to create a endpiont to send requests.  
+The server is written using [aREST](https://github.com/marcoschwartz/aREST)
+by @marcoschwartz which makes it super easy to create a end-point
+to send requests.  
 
 Theres only a couple of lines that I added to the boiler plate code of the library
 to make it work.
 
-I'm using `platform.io` through `VSCODE` but you can write the script in
+I'm using `platform.io` through `VSCode` but you can write the script in
 `ArduinoIDE`; however, you you need to install the `aREST` library regardless.
 
 ```c
